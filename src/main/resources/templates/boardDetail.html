@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>글상세페이지</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .write {
+      display: flex;
+      height:100vh;
+      justify-content: center;
+      align-items:center;
+    }
+
+    .write-con {
+      flex: 0 1 400px;
+      box-shadow: 1px 1px 10px #555555;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+    h2 {
+      text-align: left;
+      padding: 30px 20px;
+      ox-sizing: border-box;
+      background-color: #0091DB;
+      color: #ffffff;
+    }
+
+    .write-con ul {
+
+    }
+
+    .write-con ul li {
+      padding: 10px 10px;
+      box-sizing: border-box;
+    }
+
+    .write-con ul li.s1 {
+      display: flex;
+      justify-content: space-between;
+      gap: 2px;
+    }
+
+    .write-con ul li span {
+      flex: 1;
+      font-size:12px;
+    }
+
+    .write-con ul li.s1 input {
+      flex: 3;
+      padding:5px 10px;
+      box-sizing:border-box;
+      border:1px solid #cccccc;
+    }
+
+    input[type=submit] {
+      background-color: #0000ff;
+      color: #ffffff;
+         width:100%;
+      border: 0;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      cursor:pointer;
+      transition:all 0.3s;
+    }
+      input[type=submit]:hover {
+
+      background-color: #0091DB;
+      color: #eeeeee;
+
+    }
+
+
+    textarea {
+      width: 100%;
+      resize: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="write">
+    <!-- form -->
+    <div class="write-con">
+      <h2>글상세보기</h2>
+        <ul>
+          <li class="s1"><span>제목</span> <span class="s2" th:text="${board.title}"></span></li>
+          <li class="s1"><span>내용</span> <span class="s2" th:text="${board.content}"></span></li>
+          <li class="s1"><span>글작성자</span><span class="s2" th:text="${board.writer}"></span></li>
+          <li class="s1"><span>글비빌번호</span><span class="s2" th:text="${board.boardPw}"></span></li>
+          <li class="s1"><a th:href="@{/board/write}">글작성</a>
+            <a th:href="@{/board/boardList}">글목록</a></li>
+        </ul>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
