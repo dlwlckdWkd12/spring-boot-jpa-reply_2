@@ -7,6 +7,8 @@ import org.spring.springbootjpareply.dto.BoardDto;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -44,6 +46,12 @@ public class BoardEntity {
   @UpdateTimestamp  // 처음 글 수정 시 자동으로 시간이 설정
   @Column(insertable = false)   // 처음 생성시 -> 적용 X
   private LocalDateTime updateTime;// 글 수정 시간
+
+  //   게시글 조회 시  덧글목록도 보이게
+  // mappedBy = "boardEntity"  // 연관관계의 주인(외래키설정 테이블)
+  // 1: 다 -> 1의 Entity에 작성
+  @OneToMany(mappedBy = "boardEntity",cascade = CascadeType.REMOVE,orphanRemoval = true )
+  private List<ReplyEntity> replyEntityList=new ArrayList<>();
 
   // Dto -> Entity
   //글작성 시에는 id, createTime, updateTime 는 사용하시 않는다(자동추가)
